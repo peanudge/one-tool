@@ -8,6 +8,7 @@ export const JSCAddHello: JSONSchema6 = {
                     type: 'string'
                 }
             },
+            required: ['message'],
             type: 'object'
         }
     },

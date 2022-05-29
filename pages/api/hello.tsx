@@ -9,12 +9,14 @@ const log = debug('api:hello');
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const { method } = req;
     log(method);
-    const supportMethod = ['GET'];
+    const supportMethod = ['GET', 'POST'];
     if (supportMethod.indexOf(method!) === -1) {
-        res.status(400).end();
+        res.status(405).end();
         return;
     }
     if (method === 'GET') {
-        await HelloController.hello(req, res);
+        await HelloController.getHello(req, res);
+    } else if (method === 'POST') {
+        await HelloController.addHello(req, res);
     }
 }
