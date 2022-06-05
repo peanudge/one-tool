@@ -7,7 +7,8 @@ const stepGroup: StepGroup = {
 };
 
 const mockStep: Step = {
-    title: 'First Section',
+    id: 0,
+    title: 'TITLE ',
     description: 'this is example code section',
     content: {
         type: 'code',
@@ -16,12 +17,12 @@ const mockStep: Step = {
     }
 };
 for (let i = 0; i < 10; i++) {
-    stepGroup.steps.push(mockStep);
+    stepGroup.steps.push({ ...mockStep, id: i, title: mockStep.title + i });
 }
 
 const Example = () => {
     return (
-        <div className="sm:w-full mx-auto self-center">
+        <div className="w-full mx-auto self-center">
             <StepByStepTutorial stepGroup={stepGroup} />
             <div className="h-40" />
             <StepByStepTutorial stepGroup={stepGroup} />

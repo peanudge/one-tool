@@ -3,6 +3,7 @@ export interface StepGroup {
 }
 
 export interface Step {
+    id: number;
     title: string;
     description: string;
     content?: Content;
