@@ -2,16 +2,16 @@ import React, { useCallback, useState } from 'react';
 import { Step, StepGroup } from '../../types/client.type';
 import { IntersectionStepCard } from '../molecules/IntersectionStepCard';
 
-const DEBUG = true;
 type StepByStepTutorial = {
     stepGroup: StepGroup;
+    showBoundary?: boolean;
 };
 
-export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup }) => {
+export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup, showBoundary }) => {
     const [activStep, setActiveStep] = useState<Step | null>(null);
-
-    // DEBUG
+    // for DEBUG
     const [currentBoundary, setCurrentBoundary] = useState<DOMRectReadOnly | null>();
+
     const handleIntersection = useCallback((step: Step, boundary: DOMRectReadOnly) => {
         setActiveStep(step);
         setCurrentBoundary(boundary);
@@ -33,15 +33,20 @@ export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup }) 
                         <div className="min-h-screen  w-full" />
                     </div>
                     <div className="flex-1">
+                        {/* TODO: Implement Content Container Component */}
                         <div className="sticky top-12 w-full bg-slate-200 min-h-screen">
                             Content
-                            {activStep && <p className="text-lg">{activStep.title}</p>}
+                            {activStep && (
+                                <p className="text-lg">
+                                    {<p>{JSON.stringify(activStep.content)}</p>}
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
-            {/* DEBUG */}
-            {DEBUG && currentBoundary && (
+            {/* for DEBUG */}
+            {showBoundary && currentBoundary && (
                 <div
                     style={{
                         position: 'fixed',
