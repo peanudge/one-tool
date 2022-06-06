@@ -20,6 +20,7 @@ export interface CodeMark {
 
 export interface CodeContent {
     type: 'code';
+    language?: string;
     codes: string[];
     mark: CodeMark;
 }

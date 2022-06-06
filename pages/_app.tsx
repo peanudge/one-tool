@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../node_modules/highlight.js/styles/a11y-dark.css';
 
 function MyApp({ Component, pageProps }) {
     return (

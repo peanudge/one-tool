@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Step, StepGroup } from '../../types/client.type';
+import { ContentContainer } from '../molecules/ContentContainer';
 import { IntersectionStepCard } from '../molecules/IntersectionStepCard';
 
 type StepByStepTutorial = {
@@ -8,7 +9,7 @@ type StepByStepTutorial = {
 };
 
 export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup, showBoundary }) => {
-    const [activStep, setActiveStep] = useState<Step | null>(null);
+    const [activeStep, setActiveStep] = useState<Step | null>(null);
     // for DEBUG
     const [currentBoundary, setCurrentBoundary] = useState<DOMRectReadOnly | null>();
 
@@ -25,7 +26,7 @@ export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup, sh
                         {stepGroup.steps.map((step) => (
                             <IntersectionStepCard
                                 key={step.id}
-                                active={activStep && activStep.id === step.id}
+                                active={activeStep && activeStep.id === step.id}
                                 step={step}
                                 onIntersection={handleIntersection}
                             />
@@ -33,14 +34,8 @@ export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup, sh
                         <div className="min-h-screen  w-full" />
                     </div>
                     <div className="flex-1">
-                        {/* TODO: Implement Content Container Component */}
-                        <div className="sticky top-12 w-full bg-slate-200 min-h-screen">
-                            Content
-                            {activStep && (
-                                <p className="text-lg">
-                                    {<p>{JSON.stringify(activStep.content)}</p>}
-                                </p>
-                            )}
+                        <div className="sticky top-12 w-ful bg-transparent min-h-screen">
+                            {activeStep && <ContentContainer content={activeStep.content} />}
                         </div>
                     </div>
                 </div>

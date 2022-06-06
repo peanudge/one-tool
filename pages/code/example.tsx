@@ -11,7 +11,6 @@ const Example = ({ stepGroup }) => {
         <div className="w-full mx-auto self-center">
             <StepByStepTutorial stepGroup={stepGroup} showBoundary={isDebugMode} />
             <div className="h-40" />
-            <StepByStepTutorial stepGroup={stepGroup} showBoundary={isDebugMode} />
         </div>
     );
 };
@@ -42,7 +41,7 @@ export async function getServerSideProps() {
         description: 'this is example code section',
         content: {
             type: 'code',
-            codes: ['function hi() {', ' const a = 1;', ' return a;', '}'],
+            codes: [`export const CodeViewer: React.FC<Props> = ({ codeContent }) => {`],
             mark: { 0: { textColor: 'red', bgColor: 'white' } }
         }
     };
