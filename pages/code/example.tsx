@@ -8,9 +8,18 @@ const Example = ({ stepGroup }) => {
     const isDebugMode = router.query.debug !== undefined && router.query.debug === 'true';
 
     return (
-        <div className="w-full mx-auto self-center">
+        <div className="w-full mx-8 self-center">
+            <h1 className="flex w-full flex-row justify-center text-4xl mt-10">
+                Example Tutorial 1
+            </h1>
+            <div className="h-20" />
             <StepByStepTutorial stepGroup={stepGroup} showBoundary={isDebugMode} />
-            <div className="h-40" />
+
+            <h1 className="flex w-full flex-row justify-center text-4xl mt-10">
+                Example Tutorial 2
+            </h1>
+            <div className="h-20" />
+            <StepByStepTutorial stepGroup={stepGroup} showBoundary={isDebugMode} />
         </div>
     );
 };
@@ -41,12 +50,36 @@ export async function getServerSideProps() {
         description: 'this is example code section',
         content: {
             type: 'code',
-            codes: [`export const CodeViewer: React.FC<Props> = ({ codeContent }) => {`],
+            codes: [
+                `export const CodeViewer: React.FC<Props> = ({ codeContent }) => {\n\treturn;\n}`
+            ],
+            mark: { 0: { textColor: 'red', bgColor: 'white' } }
+        }
+    };
+
+    const step4: Step = {
+        id: 3,
+        title: '✍️ Finish',
+        description: 'this is example code section',
+        content: {
+            type: 'code',
+            language: 'typescript',
+            codes: [`function hello() {\n\t// FINISH\n}`],
             mark: { 0: { textColor: 'red', bgColor: 'white' } }
         }
     };
     const stepGroup: StepGroup = {
-        steps: [step1, step2, step3]
+        steps: [
+            step1,
+            step2,
+            step3,
+            step4,
+            {
+                id: 1,
+                title: '🚧 NOTE',
+                description: 'Always think and typing!'
+            }
+        ]
     };
 
     return { props: { stepGroup } };

@@ -20,7 +20,7 @@ export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup, sh
 
     return (
         <>
-            <div className="flex-1 flex flex-col w-full">
+            <div className="flex-1 flex flex-col">
                 <div className="flex flex-row">
                     <div className="flex-1 flex flex-col mr-12 mt-40">
                         {stepGroup.steps.map((step) => (
@@ -31,12 +31,10 @@ export const StepByStepTutorial: React.FC<StepByStepTutorial> = ({ stepGroup, sh
                                 onIntersection={handleIntersection}
                             />
                         ))}
-                        <div className="min-h-screen  w-full" />
+                        <div className="min-h-screen" />
                     </div>
-                    <div className="flex-1">
-                        <div className="sticky top-12 w-ful bg-transparent min-h-screen">
-                            {activeStep && <ContentContainer content={activeStep.content} />}
-                        </div>
+                    <div className="flex-1 sticky top-12 bg-transparent min-h-screen self-start bg-gray-200">
+                        {activeStep && <ContentContainer content={activeStep.content} />}
                     </div>
                 </div>
             </div>
