@@ -33,8 +33,7 @@ export async function getServerSideProps() {
         description: 'Very easy coding with function template.',
         content: {
             type: 'code',
-            codes: ['function hi() {', ' const a = 1;', ' return a;', '}'],
-            mark: { 0: { textColor: 'red', bgColor: 'white' } }
+            codes: ['function hi() {', ' const a = 1;', ' return a;', '}']
         }
     };
 
@@ -52,8 +51,7 @@ export async function getServerSideProps() {
             type: 'code',
             codes: [
                 `export const CodeViewer: React.FC<Props> = ({ codeContent }) => {\n\treturn;\n}`
-            ],
-            mark: { 0: { textColor: 'red', bgColor: 'white' } }
+            ]
         }
     };
 
@@ -64,8 +62,7 @@ export async function getServerSideProps() {
         content: {
             type: 'code',
             language: 'typescript',
-            codes: [`function hello() {\n\t// FINISH\n}`],
-            mark: { 0: { textColor: 'red', bgColor: 'white' } }
+            codes: [`function hello() {\n\t// FINISH\n}`]
         }
     };
     const stepGroup: StepGroup = {

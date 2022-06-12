@@ -10,8 +10,7 @@ describe('StepCard', () => {
         description: 'This is mock description',
         content: {
             type: 'code',
-            codes: [],
-            mark: {}
+            codes: []
         }
     };
 

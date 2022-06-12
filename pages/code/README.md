@@ -39,19 +39,9 @@ interface Step {
     content?: Content;
 }
 
-type RGBCode = string; // ex. #FFFFFF
-
-interface CodeMark {
-    [line: number]: {
-        textColor?: RGBCode;
-        bgColor?: RGBCode;
-    };
-}
-
 interface CodeContent {
     type: 'code';
     codes: string[];
-    mark: CodeMark;
 }
 
 type ImagePathUri = string; // ex) http://aws.s3....
